@@ -12,15 +12,24 @@ MENU = """
 """
 
 def read_tasks():
-    with open(TASK_FILE_PATH,'r') as tasks_file_handle:
-        return tasks_file_handle.read().splitlines()
+    try:
+        with open(TASK_FILE_PATH,'r') as tasks_file_handle:
+            return tasks_file_handle.read().splitlines()
+    except FileNotFoundError:
+        print("Invalid file path")
 
 def write_tasks(all_tasks_list: list):
-    with open(TASK_FILE_PATH,'w') as tasks_file_handle:
-        if (all_tasks_list):
-            for task in all_tasks_list:
-                if (task.strip()):
-                    tasks_file_handle.write(f"{task}\n")
+    try:
+        with open(TASK_FILE_PATH,'w') as tasks_file_handle:
+            if (all_tasks_list):
+                for task in all_tasks_list:
+                    if (task.strip()):
+                        tasks_file_handle.write(f"{task}\n")
+    except FileNotFoundError:
+        print("Invalid file path")
+    except IOError as ex:
+        print(f"Error writing to file \n {ex}")
+
 
 def print_all_tasks(all_tasks: list):
     if (all_tasks):
