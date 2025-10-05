@@ -1,5 +1,7 @@
 #Writing a short app to learn basics of lists
 
+#This is a terminal-based transient memory todo list without the bells & whistles 
+
 #Learnt the following:
 #input(), f-string, """, None, 
 #append, pop(i), clear, type casting to int, chained comparison
