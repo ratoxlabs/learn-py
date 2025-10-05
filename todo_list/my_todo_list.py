@@ -1,8 +1,10 @@
 #Writing a short app to learn basics of lists
-#Learnt the following 
-# input(), f-string, """, None, 
-# append, pop(i), clear and type casting to int
+
+#Learnt the following:
+#input(), f-string, """, None, 
+#append, pop(i), clear, type casting to int, chained comparison
 #try, except, ValueError, IndexError blocks
+#intro to functions
 
 print("Welcome to your Todo List")
 
@@ -14,6 +16,11 @@ menu = """
 4. Clear All
 5. Exit
 """
+
+def print_current_tasks():
+    print("\nCurrent Tasks:")
+    for i, task in enumerate(my_task_list, 1):
+        print(f"{i}. {task}")
 
 while True:
     #Display a menu to pick from 
@@ -28,15 +35,13 @@ while True:
                 task_title = input("\nEnter Task Title: ")
                 if (task_title):
                     my_task_list.append(task_title)
-                    print(f"\nCurrent tasks: {my_task_list}\n" )
+                    print_current_tasks()
             #print all tasks
             elif (int_choice == 2):
                 if (len(my_task_list) == 0):
                     print("\nWoohoo! No tasks to worry about now")
                 else:
-                    print("\nCurrent Tasks:")
-                    for i, task in enumerate(my_task_list, 1):
-                        print(f"{i}. {task}")
+                    print_current_tasks()
             #delete tasks
             elif (int_choice == 3):
                 #Delete only when there are tasks available
@@ -50,7 +55,7 @@ while True:
                             task_number = int(task_to_delete)
                             if (1 <= task_number <= len(my_task_list)):
                                 my_task_list.pop(task_number - 1)
-                                print(f"Update tasks: {my_task_list}\n")
+                                print_current_tasks()
                             else:
                                 #when the index entered does not have a corresponding task
                                 print("That task number does not exist \n")
@@ -67,7 +72,12 @@ while True:
                     print("No task to delete\n")
             #clear all tasks
             elif (int_choice == 4):
-                my_task_list.clear()
+                confirm = input("Enter y to confirm & any key to cancel: ").lower()
+                if (confirm == "y"):
+                    my_task_list.clear()
+                else:
+                    print("Cancelled.")
+                    print_current_tasks()
             #exit app
             elif (int_choice == 5):
                 break
@@ -83,3 +93,4 @@ while True:
     else:
         print("\nInvalid Choice (None selected)")
         continue
+
