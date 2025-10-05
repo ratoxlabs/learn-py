@@ -1,0 +1,26 @@
+print(3 * 5.5)
+print(25/1/5)
+print("learning python")
+print (3==3)
+print (3!=3)
+
+print(type(5))
+print(type(3.14))
+print(type("Hello"))
+print(type([1, 2, 3, 3]))
+print(type((1, 2, 3, 3)))
+print(type({1, 2, 3, 3}))
+print(type({'a': 1}))
+print(type(True))
+print(type(None))
+
+print(type("") is None)
+print(type(3) is None)
+print(True is None)
+print(type(2.3) is None)
+print(None is None)
+
+print(type(0) is None)
+
+print(45/8)
+print(45//8)
